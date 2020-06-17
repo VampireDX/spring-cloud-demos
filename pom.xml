@@ -6,13 +6,12 @@
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
     <version>2.2.3.RELEASE</version>
-    <relativePath/> <!-- lookup parent from repository -->
   </parent>
 
   <groupId>test</groupId>
   <artifactId>spring-cloud-demos</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>spring-cloud-demos</name>
+  <packaging>pom</packaging>
   <description>Demo project for spring cloud</description>
 
   <modules>
