@@ -1,0 +1,39 @@
+---
+spring:
+  profiles: default
+  application:
+    name: eureka-server
+
+server:
+  port: 8761
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka/
+
+---
+spring:
+  profiles: beijing
+  application:
+    name: beijing
+
+server:
+  port: 8002
+
+eureka:
+  instance:
+    preferIpAddress: true
+    metadataMap:
+      zone: beijing
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      shanghai: http://127.0.0.1:8001/eureka/
+      beijing: http://127.0.0.1:8002/eureka/
+
