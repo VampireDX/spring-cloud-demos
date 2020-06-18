@@ -12,7 +12,7 @@ public class Config {
     @Bean(name = "testMap")
     public Map<String, String> getMap() {
         Map<String, String> map = new HashMap<>();
-        map.put("1", "a");
+        map.put("1", "Tommy");
         return map;
     }
 

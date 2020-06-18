@@ -1,0 +1,52 @@
+spring:
+  application:
+    name: service-consumer
+
+server:
+  port: 8001
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka/
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 200
+        readTimeout: 200
+        loggerLevel: FULL
+        #retryer: feign.Retryer.Default
+  hystrix:
+    enabled: true
+
+hystrix:
+  command:
+    default:
+      circuitBreaker:
+        requestVolumeThreshold: 1
+        sleepWindowInMilliseconds: 5000
+        errorThresholdPercentage: 50
+      execution:
+        isolation:
+          strategy: SEMAPHORE
+          semaphore:
+            maxConcurrentRequests: 200
+      metrics:
+        rollingStats:
+          timeInMilliseconds: 10000
+          numBuckets: 10
+
+service-provider:
+  ribbon:
+    MaxAutoRetries: 3
+    MaxAutoRetriesNextServer: 1
+    ConnectTimeout: 300
+    ReadTimeout: 300
+    #NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+    #listOfServers: http://127.0.0.1:8180/
