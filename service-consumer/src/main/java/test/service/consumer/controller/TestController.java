@@ -1,4 +1,4 @@
-package test.service.consumer;
+package test.service.consumer.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,10 +20,9 @@ public class TestController {
     private TestService service;
 
     @RequestMapping("check")
-    public String check(String name) {
+    public String check() {
         long c = System.currentTimeMillis();
         try {
-            log.info("-------------");
             String s = "check now, " + service.hello("" + i.getAndIncrement());
             log.info(s + " : d [{}]ms", System.currentTimeMillis() - c);
             return s;

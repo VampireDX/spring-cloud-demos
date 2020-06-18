@@ -1,4 +1,4 @@
-package test.service.provider;
+package test.service.provider.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,7 +12,7 @@ import java.util.Map;
 public class TestController implements TestService {
 
     @Resource(name = "testMap")
-    private Map<String,String> testMap;
+    private Map<String, String> testMap;
 
     @Override
     public String hello(String id) {
@@ -22,7 +22,16 @@ public class TestController implements TestService {
 //        } catch (InterruptedException e) {
 //            e.printStackTrace();
 //        }
-        log.info("return {}" ,s);
+        log.info("return {}", s);
+        return s;
+    }
+
+
+    @Override
+    public String bye(String id) {
+        String s = "bye," + testMap.get(id);
+
+        log.info("return {}", s);
         return s;
     }
 }

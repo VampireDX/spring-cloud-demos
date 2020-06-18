@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface TestService {
 
     @RequestMapping(path = "hello", method = RequestMethod.GET)
-    String hello(@RequestParam(name = "id", required = false) String id);
+    String hello(@RequestParam(name = "id") String id);
+
+    @RequestMapping(path = "bye", method = RequestMethod.GET)
+    String bye(@RequestParam(name = "id") String id);
 
 }
