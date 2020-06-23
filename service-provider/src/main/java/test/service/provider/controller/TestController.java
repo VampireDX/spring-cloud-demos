@@ -17,20 +17,28 @@ public class TestController implements TestService {
     @Override
     public String hello(String id) {
         String s = "hello," + testMap.get(id);
-//        try {
-//            Thread.sleep(1000l);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+        Integer i = Integer.parseInt(id);
+        if (i % 4 == 0) {
+            sleep();
+        }
         log.info("return {}", s);
         return s;
     }
 
 
+    private void sleep() {
+        try {
+            Thread.sleep(1000l);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     @Override
     public String bye(String id) {
+        sleep();
         String s = "bye," + testMap.get(id);
-
         log.info("return {}", s);
         return s;
     }

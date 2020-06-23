@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: service-provider
+
+server:
+  port: 8001
+
+eureka:
+  instance:
+    preferIpAddress: true
+    instanceId: ${spring.cloud.client.ip-address}:${server.port}
+    metadataMap:
+      zone: beijing
+  client:
+    region: china
+    preferSameZoneEureka: true
+    registerWithEureka: true
+    fetchRegistry: true
+    availabilityZones:
+      china: beijing,shanghai
+    serviceUrl:
+      beijing: http://127.0.0.1:9001/eureka/
+      shanghai: http://127.0.0.1:9002/eureka/
+

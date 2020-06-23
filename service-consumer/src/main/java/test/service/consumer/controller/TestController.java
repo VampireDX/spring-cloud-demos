@@ -22,14 +22,15 @@ public class TestController {
     @RequestMapping("check")
     public String check() {
         long c = System.currentTimeMillis();
+        String s = null;
         try {
-            String s = "check now, " + service.hello("" + i.getAndIncrement());
-            log.info(s + " : d [{}]ms", System.currentTimeMillis() - c);
+            s = "check now, " + service.hello("" + i.getAndIncrement());
             return s;
         } catch (Exception ex) {
-            String s = ex.getMessage();
-            log.error(s + " : d [{}]ms", System.currentTimeMillis() - c);
+            s = ex.getMessage();
             return s;
+        } finally {
+            log.info(s + " : d [{}]ms", System.currentTimeMillis() - c);
         }
     }
 
